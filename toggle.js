@@ -1,24 +1,24 @@
 window.addEventListener('load', function() {
 	document.getElementById("toggleOn").onclick = function() {
-		chrome.extension.sendRequest({method: "toogleKeyboardOn"}, function(response) {
+		chrome.runtime.sendMessage({method: "toogleKeyboardOn"}, function(response) {
 			window.close();	
 		});
 	}
 	document.getElementById("settings").onclick = function() {
-		window.open(chrome.extension.getURL("options.html"));
+        window.open(chrome.runtime.getURL("options.html"));
 	}
 	document.getElementById("toggleOff").onclick = function() {
-		chrome.extension.sendRequest({method: "toogleKeyboardOff"}, function(response) {
+		chrome.runtime.sendMessage({method: "toogleKeyboardOff"}, function(response) {
 			window.close();	
 		});
 	}
 	document.getElementById("toggleDemand").onclick = function() {
-		chrome.extension.sendRequest({method: "toogleKeyboardDemand"}, function(response) {
+		chrome.runtime.sendMessage({method: "toogleKeyboardDemand"}, function(response) {
 			window.close();	
 		});
 	}
 	document.getElementById("goToUrl").onclick = function() {
-		chrome.extension.sendRequest({method: "openUrlBar"}, function(response) {
+		chrome.runtime.sendMessage({method: "openUrlBar"}, function(response) {
 			eval(callback)(response.data);
 		});
 		window.close();
